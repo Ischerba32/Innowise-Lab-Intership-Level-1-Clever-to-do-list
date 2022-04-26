@@ -1,14 +1,13 @@
 // import app from "../../config/firebaseConfig";
-import { getAuth, signOut } from "firebase/auth";
-import { auth } from "../../config/firebaseConfig";
+import Calendar from "../Calendar/Calendar";
+import { Header } from "../Header/Header";
+
 
 const Home = () => {
-  // const auth = getAuth();
-
   return (
     <>
-      Home protected
-      <button onClick={() => signOut(auth)}>SignOut</button>
+      <Header />
+      <Calendar />
     </>
   );
 };
