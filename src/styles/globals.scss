@@ -12,6 +12,16 @@ body {
 	margin: 0 auto;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+* {
+	box-sizing: border-box;
+	outline-color: var(--primary);
+}
+
 :root {
 	--black: #3B434E;
 	--gray-light: #EBEBEB;

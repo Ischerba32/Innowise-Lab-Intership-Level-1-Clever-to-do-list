@@ -1,0 +1,11 @@
+.dot {
+  background: var(--red);
+  width: 6px;
+  height: 6px;
+  margin: 0 5px;
+  border-radius: 3px;
+
+  &__complete {
+    background: var(--primary);
+  }
+}

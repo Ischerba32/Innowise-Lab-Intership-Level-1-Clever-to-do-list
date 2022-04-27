@@ -3,9 +3,9 @@ import IDayProps from './Day.props';
 import styles from './Day.module.scss';
 import cn from 'classnames';
 import { Card } from '../UI/Card/Card';
+import { Dot } from '../UI/Dot/Dot';
 
 const Day = ({ day, activeDay, setActiveDay }: IDayProps) => {
-  // const [active, setActive] = useState<boolean>(false);
 
   const handleDayClick = () => {
     setActiveDay(day.format('YYYY-MM-DD'));
@@ -24,6 +24,11 @@ const Day = ({ day, activeDay, setActiveDay }: IDayProps) => {
         <p>{day.format('ddd')}</p>
         <p>{day.format('DD')}</p>
       </Card>
+      {/* Check types of tasks after fethcing day from DB */}
+      <div className={styles.day__dots}>
+        <Dot color='uncomplete' />
+        <Dot color='complete' />
+      </div>
     </div>
   );
 };
