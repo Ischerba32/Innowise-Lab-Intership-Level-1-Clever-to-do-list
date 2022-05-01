@@ -1,11 +1,13 @@
-import React from 'react';
 import ToDoItem from '../ToDoItem/ToDoItem';
 import styles from './ToDoList.module.scss';
+import IToDoListProps from './ToDoList.props';
 
-const ToDoList = () => {
+const ToDoList = ({tasks}: IToDoListProps) => {
   return (
-    <div>
-      <ToDoItem />
+    <div className={styles.toDoList}>
+      {tasks && tasks.map(task => (
+        <ToDoItem task= {task} key={task.id} />
+      ))}
     </div>
   );
 };

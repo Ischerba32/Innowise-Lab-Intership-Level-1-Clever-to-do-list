@@ -3,6 +3,7 @@
   grid-template-columns: 30px 1fr auto;
   align-items: center;
   padding: 10px;
+  margin: 10px 0;
 
   &__content {}
 
@@ -10,7 +11,14 @@
     margin-left: 10px;
   }
 
-  &__buttons {}
+  &__buttons {
+    button:first-child {
+      margin-right: 5px;
+    }
+    button:last-child {
+      margin-left: 5px;
+    }
+  }
 }
 
 .container {

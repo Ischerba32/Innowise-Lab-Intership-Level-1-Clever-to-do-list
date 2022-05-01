@@ -7,3 +7,14 @@
   overflow-x: auto;
 
 }
+
+.toDo {
+  padding: 15px;
+
+  &__addTaskBtn {
+    display: block !important;
+    margin: 0 auto;
+    width: 33%;
+    font-weight: 600;
+  }
+}

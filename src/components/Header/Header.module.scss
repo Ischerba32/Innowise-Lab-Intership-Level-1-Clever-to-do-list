@@ -1,12 +1,10 @@
 .header {
-	// display: grid;
-	// grid-template-columns: 1fr 40px;
-	// gap: 10px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background: var(--white);
 	padding: 15px;
+	border-radius: 10px;
 	box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
 }
 
