@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Calendar.module.scss';
 import ICalendarProps from './Calendar.props';
 import {calendar, currentDay, day, endMonthDay} from '../../helpers/calendar';
@@ -9,9 +9,24 @@ import { Card } from '../UI/Card/Card';
 import { Htag } from '../UI/Htag/Htag';
 import { Button } from '../UI/Button/Button';
 import ToDoList from '../ToDo/ToDoList/ToDoList';
+import IDataFromDB from '../../interfaces/dataFomDb.interface';
 
 const Calendar = () => {
   const [activeDay, setActiveDay] = useState<string>(moment().format('YYYY-MM-DD'));
+
+  // Fix this shit that return incorrect result
+  const checkTasksStatus = (DATAFROMDB: IDataFromDB[], date: string) => {
+    const dayTasks = DATAFROMDB.find(day => day.date === date)
+    ?.tasks;
+    if (!dayTasks) return 'none';
+    if (dayTasks?.find(task => task.status === 'complete')) {
+      if (dayTasks?.find(task => task.status === 'incomplete')) {
+        return 'both';
+      }
+      return 'complete';
+    }
+    return 'incomplete';
+  };
 
   const dayTasks = DATAFROMDB.find(day => day.date === activeDay)?.tasks;
   console.log(dayTasks);
@@ -24,7 +39,8 @@ const Calendar = () => {
             key={day.format('YYYY-MM-DD')}
             day={day}
             activeDay={activeDay}
-            setActiveDay={setActiveDay} />
+            setActiveDay={setActiveDay}
+            dot={checkTasksStatus(DATAFROMDB, day.format('YYYY-MM-DD'))} />
         ))}
       </div>
       <Card color='white' className={styles.toDo}>

@@ -5,23 +5,47 @@ import { Header } from "../Header/Header";
 
 export const DATAFROMDB: IDataFromDB[] = [
     {
-      date: '2022-05-01',
+      date: '2022-05-04',
       tasks: [
         {
           id: 1,
           title: 'Title of the task',
-          description: 'Some description',
+          description: 'Some description Some description Some description Some description Some description Some description Some description Some description ',
           status: 'incomplete'
         },
         {
           id: 2,
           title: 'Title of the task #2',
           description: 'Some description #2',
-          status: 'complete'
+          status: 'incomplete'
         },
         {
           id: 3,
           title: 'Title of the task #3',
+          description: 'Some description #3',
+          status: 'incomplete'
+        },
+
+      ]
+    },
+    {
+      date: '2022-05-05',
+      tasks: [
+        {
+          id: 4,
+          title: 'Title of the task 03.05',
+          description: 'Some description',
+          status: 'complete'
+        },
+        {
+          id: 5,
+          title: 'Title of the task #2 03.05',
+          description: 'Some description #2',
+          status: 'complete'
+        },
+        {
+          id: 6,
+          title: 'Title of the task #3 03.05',
           description: 'Some description #3',
           status: 'complete'
         },
@@ -29,23 +53,23 @@ export const DATAFROMDB: IDataFromDB[] = [
       ]
     },
     {
-      date: '2022-05-02',
+      date: '2022-05-06',
       tasks: [
         {
           id: 4,
-          title: 'Title of the task 29.04',
+          title: 'Title of the task 04.05',
           description: 'Some description',
           status: 'incomplete'
         },
         {
           id: 5,
-          title: 'Title of the task #2 29.04',
+          title: 'Title of the task #2 04.05',
           description: 'Some description #2',
           status: 'complete'
         },
         {
           id: 6,
-          title: 'Title of the task #3 29.04',
+          title: 'Title of the task #3 04.05',
           description: 'Some description #3',
           status: 'complete'
         },

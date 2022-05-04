@@ -2,7 +2,7 @@ import styles from './Dot.module.scss';
 import IDotProps from './Dot.props';
 import cn from 'classnames';
 
-export const Dot = ({color = 'uncomplete'}: IDotProps) => {
+export const Dot = ({color = 'incomplete'}: IDotProps) => {
   return (
     <>
       <div className={cn(styles.dot, {

@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { Card } from '../UI/Card/Card';
 import { Dot } from '../UI/Dot/Dot';
 
-const Day = ({ day, activeDay, setActiveDay }: IDayProps) => {
+const Day = ({ day, activeDay, setActiveDay, dot }: IDayProps) => {
 
   const handleDayClick = () => {
     setActiveDay(day.format('YYYY-MM-DD'));
@@ -26,8 +26,16 @@ const Day = ({ day, activeDay, setActiveDay }: IDayProps) => {
       </Card>
       {/* Check types of tasks after fethcing day from DB */}
       <div className={styles.day__dots}>
-        <Dot color='uncomplete' />
-        <Dot color='complete' />
+        {dot === 'complete' ?
+        <Dot color='complete' /> :
+        dot === 'incomplete' ?
+        <Dot color='incomplete' /> :
+        dot === 'both' ?
+        <>
+          <Dot color='complete' />
+          <Dot color='incomplete' />
+        </>: <></>
+        }
       </div>
     </div>
   );
