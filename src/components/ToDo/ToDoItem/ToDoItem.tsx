@@ -7,10 +7,20 @@ import IToDoItemProps from './ToDoItem.props';
 import cn from 'classnames';
 import Modal from '../../UI/Modal/Modal';
 import Checkbox from '../../UI/Checkbox/Checkbox';
+import { Input } from '../../UI/Input/Input';
+import { Textarea } from '../../UI/Textarea/Textarea';
+import { useForm } from 'react-hook-form';
+import ITaskForm from '../../../interfaces/taskForm.interface';
 
-const ToDoItem = ({ task }: IToDoItemProps) => {
+const ToDoItem = ({ task, taskDate }: IToDoItemProps) => {
   const [descriptionOpened, setDescriptionOpened] = useState<boolean>(false);
   const [modalOpened, setModalOpened] = useState<boolean>(false);
+  const {register, handleSubmit, formState: { errors }, reset, clearErrors} = useForm<ITaskForm>();
+
+  const editTask = ({title, description, date}: ITaskForm) => {
+    console.log(title, description, date);
+  };
+
   return (
     <>
       <Card color='blue' className={styles.toDoItem}>
@@ -43,7 +53,39 @@ const ToDoItem = ({ task }: IToDoItemProps) => {
         active={modalOpened}
         setActive={setModalOpened}
       >
-        <p>{task.description}</p>
+        <form
+          onSubmit={handleSubmit(editTask)}
+          className={styles.createTask__form}
+        >
+          <Input
+            type='text'
+            defaultValue={task.title}
+            placeholder='Task title'
+            {...register('title', {required: { value: true, message: 'Enter the title' }})}
+            error={errors.title}
+
+          />
+          <Textarea
+            placeholder='Task description'
+            defaultValue={task.description}
+            {...register('description', {required: { value: true, message: 'Enter the description' }})}
+            error={errors.description}
+
+          />
+          <Input
+            type='date'
+            placeholder='Task date'
+            defaultValue={taskDate}
+            {...register('date', {required: { value: true, message: 'Enter the date' }})}
+            error={errors.date}
+          />
+          <Button
+            appearance='primary'
+            onClick={() => clearErrors()}
+          >
+            Update
+          </Button>
+      </form>
       </Modal>
     </>
   );

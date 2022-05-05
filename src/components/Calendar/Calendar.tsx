@@ -10,9 +10,11 @@ import { Htag } from '../UI/Htag/Htag';
 import { Button } from '../UI/Button/Button';
 import ToDoList from '../ToDo/ToDoList/ToDoList';
 import IDataFromDB from '../../interfaces/dataFomDb.interface';
+import CreateTask from '../CreateTask/CreateTask';
 
 const Calendar = () => {
   const [activeDay, setActiveDay] = useState<string>(moment().format('YYYY-MM-DD'));
+  const [modalOpened, setModalOpened] = useState<boolean>(false);
 
   // Fix this shit that return incorrect result
   const checkTasksStatus = (DATAFROMDB: IDataFromDB[], date: string) => {
@@ -45,14 +47,16 @@ const Calendar = () => {
       </div>
       <Card color='white' className={styles.toDo}>
       <Htag tag='h2'>{dayTasks ? dayTasks.length : 0} Tasks Today:</Htag>
-      { dayTasks && <ToDoList tasks={dayTasks} /> }
+      { dayTasks && <ToDoList tasks={dayTasks} tasksDate={activeDay} /> }
       <Button
         appearance='primary'
         className={styles.toDo__addTaskBtn}
+        onClick={() => setModalOpened(true)}
       >
         + Add a new Task
       </Button>
     </Card>
+    <CreateTask active={modalOpened} setActive={setModalOpened} />
     </>
   );
 };
