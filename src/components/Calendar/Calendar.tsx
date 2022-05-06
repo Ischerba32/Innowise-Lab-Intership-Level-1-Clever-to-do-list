@@ -11,10 +11,25 @@ import { Button } from '../UI/Button/Button';
 import ToDoList from '../ToDo/ToDoList/ToDoList';
 import IDataFromDB from '../../interfaces/dataFomDb.interface';
 import CreateTask from '../CreateTask/CreateTask';
+import { database } from '../../config/firebaseConfig';
+import { set, ref, onValue } from 'firebase/database';
 
 const Calendar = () => {
+  const [dataFromDB, setDataFromDB] = useState({});
   const [activeDay, setActiveDay] = useState<string>(moment().format('YYYY-MM-DD'));
   const [modalOpened, setModalOpened] = useState<boolean>(false);
+
+  const fetchData = () => {
+    onValue(ref(database), snapshot => {
+      const data = snapshot.val();
+      console.log(data);
+      console.log(Object.values(data));
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  },[]);
 
   // Fix this shit that return incorrect result
   const checkTasksStatus = (DATAFROMDB: IDataFromDB[], date: string) => {
@@ -31,7 +46,7 @@ const Calendar = () => {
   };
 
   const dayTasks = DATAFROMDB.find(day => day.date === activeDay)?.tasks;
-  console.log(dayTasks);
+  // console.log(dayTasks);
 
   return (
     <>

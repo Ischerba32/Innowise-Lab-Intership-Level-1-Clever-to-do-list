@@ -2,10 +2,11 @@
 import IDataFromDB from "../../interfaces/dataFomDb.interface";
 import Calendar from "../Calendar/Calendar";
 import { Header } from "../Header/Header";
+import { useEffect } from "react";
 
 export const DATAFROMDB: IDataFromDB[] = [
     {
-      date: '2022-05-04',
+      date: '2022-05-06',
       tasks: [
         {
           id: 1,
@@ -29,7 +30,7 @@ export const DATAFROMDB: IDataFromDB[] = [
       ]
     },
     {
-      date: '2022-05-05',
+      date: '2022-05-07',
       tasks: [
         {
           id: 4,
@@ -53,7 +54,7 @@ export const DATAFROMDB: IDataFromDB[] = [
       ]
     },
     {
-      date: '2022-05-06',
+      date: '2022-05-08',
       tasks: [
         {
           id: 4,
@@ -79,7 +80,8 @@ export const DATAFROMDB: IDataFromDB[] = [
 ];
 
 const Home = () => {
-  console.log(DATAFROMDB);
+  // console.log(DATAFROMDB);
+
   return (
     <>
       <Header />

@@ -1,0 +1,59 @@
+{
+  "2022-05-06": {
+    "tasks": {
+      "1": {
+        "title": "Title of the task 1",
+        "description": "Some description",
+        "status": "incomplete"
+      },
+      "2": {
+        "title": "Title of the task 2 ",
+        "description": "Some description",
+        "status": "incomplete"
+      },
+      "3": {
+        "title": "Title of the task 3",
+        "description": "Some description",
+        "status": "incomplete"
+      }
+    }
+  },
+  "2022-05-07": {
+    "tasks": {
+      "1": {
+        "title": "Title of the task 1",
+        "description": "Some description",
+        "status": "complete"
+      },
+      "2": {
+        "title": "Title of the task 2 ",
+        "description": "Some description",
+        "status": "incomplete"
+      },
+      "3": {
+        "title": "Title of the task 3",
+        "description": "Some description",
+        "status": "incomplete"
+      }
+    }
+  },
+  "2022-05-08": {
+    "tasks": {
+      "1": {
+        "title": "Title of the task 1",
+        "description": "Some description",
+        "status": "complete"
+      },
+      "2": {
+        "title": "Title of the task 2 ",
+        "description": "Some description",
+        "status": "complete"
+      },
+      "3": {
+        "title": "Title of the task 3",
+        "description": "Some description",
+        "status": "complete"
+      }
+    }
+  }
+}
