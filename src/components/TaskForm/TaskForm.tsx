@@ -11,9 +11,10 @@ import cn from 'classnames';
 const TaskForm = ({submitHandler, buttonTitle, title, description, date, className, ...props}: ITaskFormProps) => {
   const {register, handleSubmit, formState: { errors }, reset, clearErrors} = useForm<ITaskForm>();
 
-  useEffect(()=> {
-    return () => reset();
-  }, []);
+  const handleButtonClick = () => {
+    clearErrors();
+    reset();
+  };
 
   return (
     <form
@@ -45,7 +46,7 @@ const TaskForm = ({submitHandler, buttonTitle, title, description, date, classNa
       />
       <Button
         appearance='primary'
-        onClick={() => clearErrors()}
+        onClick={handleButtonClick}
       >
         {buttonTitle}
       </Button>

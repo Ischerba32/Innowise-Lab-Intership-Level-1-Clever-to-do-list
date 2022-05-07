@@ -1,41 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './Calendar.module.scss';
-import ICalendarProps from './Calendar.props';
-import {calendar, currentDay, day, endMonthDay} from '../../helpers/calendar';
+import {calendar} from '../../helpers/calendar';
 import moment, { Moment } from 'moment';
 import Day from '../Day/Day';
-import { DATAFROMDB } from '../Home/Home';
 import { Card } from '../UI/Card/Card';
 import { Htag } from '../UI/Htag/Htag';
 import { Button } from '../UI/Button/Button';
 import ToDoList from '../ToDo/ToDoList/ToDoList';
-import IDataFromDB from '../../interfaces/dataFomDb.interface';
 import CreateTask from '../CreateTask/CreateTask';
 import { database } from '../../config/firebaseConfig';
-import { set, ref, onValue } from 'firebase/database';
+import { ref, onValue } from 'firebase/database';
+import { AuthContext } from '../../context/auth.context';
+import ITask from '../../interfaces/task.interface';
 
 const Calendar = () => {
-  const [dataFromDB, setDataFromDB] = useState({});
   const [activeDay, setActiveDay] = useState<string>(moment().format('YYYY-MM-DD'));
   const [modalOpened, setModalOpened] = useState<boolean>(false);
+  const [dataFromDB, setDataFromDB] = useState<ITask[]>([]);
+  const uid = useContext(AuthContext);
 
-  const fetchData = () => {
-    onValue(ref(database), snapshot => {
-      const data = snapshot.val();
-      console.log(data);
-      console.log(Object.values(data));
+  const fetchData = (uid: string) => {
+    console.log(`uid: ${uid}`);
+    uid && onValue(ref(database, `/${uid}/tasks`), snapshot => {
+    console.log(snapshot.val());
+    setDataFromDB(Object.values(snapshot.val()));
     });
+    // get(child(ref(database), `/${uid}/tasks`)).then(snapshot => {
+
+    //   if (snapshot.exists()) {
+    //     console.log(snapshot.val());
+    //     setDataFromDB(Object.values(snapshot.val()));
+    //   }
+    // }).catch(error => {
+    //   console.error(error);
+    // });
   };
-
   useEffect(() => {
-    fetchData();
-  },[]);
+    fetchData(uid);
+  },[uid]);
 
-  // Fix this shit that return incorrect result
-  const checkTasksStatus = (DATAFROMDB: IDataFromDB[], date: string) => {
-    const dayTasks = DATAFROMDB.find(day => day.date === date)
-    ?.tasks;
-    if (!dayTasks) return 'none';
+  const checkTasksStatus = (tasks: ITask[], date: string) => {
+    const dayTasks = tasks.filter(task => task.date === date);
+    if (!dayTasks.length) return 'none';
     if (dayTasks?.find(task => task.status === 'complete')) {
       if (dayTasks?.find(task => task.status === 'incomplete')) {
         return 'both';
@@ -45,8 +51,7 @@ const Calendar = () => {
     return 'incomplete';
   };
 
-  const dayTasks = DATAFROMDB.find(day => day.date === activeDay)?.tasks;
-  // console.log(dayTasks);
+  const dayTasks = dataFromDB.filter(task => task.date === activeDay);
 
   return (
     <>
@@ -57,7 +62,7 @@ const Calendar = () => {
             day={day}
             activeDay={activeDay}
             setActiveDay={setActiveDay}
-            dot={checkTasksStatus(DATAFROMDB, day.format('YYYY-MM-DD'))} />
+            dot={checkTasksStatus(dataFromDB, day.format('YYYY-MM-DD'))} />
         ))}
       </div>
       <Card color='white' className={styles.toDo}>
