@@ -9,9 +9,6 @@ moment.updateLocale('en', {
 export const currentDay = moment();
 export const endMonthDay = moment().endOf('month');
 
-console.log(currentDay.format('YYYY-MM-DD'));
-console.log(endMonthDay.format('YYYY-MM-DD'));
-
 export const calendar: Moment[] = [];
 
 export const day = currentDay.clone();
@@ -21,5 +18,4 @@ while(!day.isSameOrAfter(endMonthDay)) {
   day.add('1', 'day');
 }
 
-// console.log(calendar);
 

@@ -1,5 +1,3 @@
-import { StringOptions } from "sass";
-
 export default interface ITask {
   id: string;
   title: string;

@@ -12,20 +12,24 @@ import { database } from '../../config/firebaseConfig';
 import { ref, onValue } from 'firebase/database';
 import { AuthContext } from '../../context/auth.context';
 import ITask from '../../interfaces/task.interface';
+import { Loader } from '../UI/Loader/Loader';
 
 const Calendar = () => {
   const [activeDay, setActiveDay] = useState<string>(moment().format('YYYY-MM-DD'));
   const [modalOpened, setModalOpened] = useState<boolean>(false);
   const [dataFromDB, setDataFromDB] = useState<ITask[] | null>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const uid = useContext(AuthContext);
 
   const fetchData = (uid: string) => {
+    setLoading(true);
     console.log(`uid: ${uid}`);
     uid && onValue(ref(database, `/${uid}/tasks`), snapshot => {
     console.log(snapshot.val());
     if (snapshot.val()) {
       setDataFromDB(Object.values(snapshot.val()));
     } else setDataFromDB([]);
+    setLoading(false);
     });
   };
   useEffect(() => {
@@ -48,6 +52,7 @@ const Calendar = () => {
 
   return (
     <>
+      {loading && <Loader speed={2} />}
       <div className={styles.calendar}>
         {calendar && calendar.map((day: Moment) => (
           <Day
