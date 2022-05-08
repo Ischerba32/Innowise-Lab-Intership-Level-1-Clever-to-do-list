@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button } from '../../UI/Button/Button';
 import styles from './ToDoItem.module.scss';
 import { Htag } from '../../UI/Htag/Htag';
@@ -7,26 +7,47 @@ import IToDoItemProps from './ToDoItem.props';
 import cn from 'classnames';
 import Modal from '../../UI/Modal/Modal';
 import Checkbox from '../../UI/Checkbox/Checkbox';
-import { Input } from '../../UI/Input/Input';
-import { Textarea } from '../../UI/Textarea/Textarea';
-import { useForm } from 'react-hook-form';
 import ITaskForm from '../../../interfaces/taskForm.interface';
 import TaskForm from '../../TaskForm/TaskForm';
+import { ref, update, remove } from "firebase/database";
+import { database } from '../../../config/firebaseConfig';
+import { AuthContext } from '../../../context/auth.context';
+
 
 const ToDoItem = ({ task, taskDate }: IToDoItemProps) => {
   const [descriptionOpened, setDescriptionOpened] = useState<boolean>(false);
   const [modalOpened, setModalOpened] = useState<boolean>(false);
-  const {register, handleSubmit, formState: { errors }, reset, clearErrors} = useForm<ITaskForm>();
+  const uid = useContext(AuthContext);
 
   const editTask = ({title, description, date}: ITaskForm) => {
-    console.log(title, description, date);
+    console.log(title, description, date, task.id);
+    update(ref(database, `${uid}/tasks/${task.id}`), {
+      title,
+      description,
+      id: task.id,
+      date,
+      status: task.status
+    });
+  };
+
+  const removeTask = () => {
+    remove(ref(database, `${uid}/tasks/${task.id}`));
+  };
+
+  const toggleTaskStatus = () => {
+    update(ref(database, `${uid}/tasks/${task.id}`), {
+      status: task.status === 'complete' ? 'incomplete': 'complete'
+    });
   };
 
   return (
     <>
       <Card color='blue' className={styles.toDoItem}>
         <div className={styles.toDoItem__content}>
-          <Checkbox defaultChecked={task.status === 'complete' ? true : false} />
+          <Checkbox
+            defaultChecked={task.status === 'complete' ? true : false}
+            onClick={toggleTaskStatus}
+          />
         </div>
         <div
           className={styles.toDoItem__title}
@@ -40,7 +61,7 @@ const ToDoItem = ({ task, taskDate }: IToDoItemProps) => {
         </div>
         <div className={styles.toDoItem__buttons}>
           <Button appearance='primary' onClick={()=> setModalOpened(true)}>Edit</Button>
-          <Button appearance='primary'>Delete</Button>
+          <Button appearance='primary' onClick={removeTask}>Delete</Button>
         </div>
       </Card>
       <Card color='blue' className={cn(styles.toDoItem__description, {

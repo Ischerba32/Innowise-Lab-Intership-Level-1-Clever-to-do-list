@@ -11,10 +11,14 @@ import cn from 'classnames';
 const TaskForm = ({submitHandler, buttonTitle, title, description, date, className, ...props}: ITaskFormProps) => {
   const {register, handleSubmit, formState: { errors }, reset, clearErrors} = useForm<ITaskForm>();
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     clearErrors();
-    reset();
+    // reset();
   };
+
+  // const formSubmit = () => {
+  //   submitHandler
+  // }
 
   return (
     <form

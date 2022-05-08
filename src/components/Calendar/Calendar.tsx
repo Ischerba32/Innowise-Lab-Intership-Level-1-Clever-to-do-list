@@ -16,32 +16,25 @@ import ITask from '../../interfaces/task.interface';
 const Calendar = () => {
   const [activeDay, setActiveDay] = useState<string>(moment().format('YYYY-MM-DD'));
   const [modalOpened, setModalOpened] = useState<boolean>(false);
-  const [dataFromDB, setDataFromDB] = useState<ITask[]>([]);
+  const [dataFromDB, setDataFromDB] = useState<ITask[] | null>([]);
   const uid = useContext(AuthContext);
 
   const fetchData = (uid: string) => {
     console.log(`uid: ${uid}`);
     uid && onValue(ref(database, `/${uid}/tasks`), snapshot => {
     console.log(snapshot.val());
-    setDataFromDB(Object.values(snapshot.val()));
+    if (snapshot.val()) {
+      setDataFromDB(Object.values(snapshot.val()));
+    } else setDataFromDB([]);
     });
-    // get(child(ref(database), `/${uid}/tasks`)).then(snapshot => {
-
-    //   if (snapshot.exists()) {
-    //     console.log(snapshot.val());
-    //     setDataFromDB(Object.values(snapshot.val()));
-    //   }
-    // }).catch(error => {
-    //   console.error(error);
-    // });
   };
   useEffect(() => {
     fetchData(uid);
   },[uid]);
 
-  const checkTasksStatus = (tasks: ITask[], date: string) => {
-    const dayTasks = tasks.filter(task => task.date === date);
-    if (!dayTasks.length) return 'none';
+  const checkTasksStatus = (tasks: ITask[] | null, date: string) => {
+    const dayTasks = tasks?.filter(task => task.date === date);
+    if (!dayTasks || !dayTasks.length) return 'none';
     if (dayTasks?.find(task => task.status === 'complete')) {
       if (dayTasks?.find(task => task.status === 'incomplete')) {
         return 'both';
@@ -51,7 +44,7 @@ const Calendar = () => {
     return 'incomplete';
   };
 
-  const dayTasks = dataFromDB.filter(task => task.date === activeDay);
+  const dayTasks = dataFromDB?.filter(task => task.date === activeDay);
 
   return (
     <>
@@ -66,7 +59,9 @@ const Calendar = () => {
         ))}
       </div>
       <Card color='white' className={styles.toDo}>
-      <Htag tag='h2'>{dayTasks ? dayTasks.length : 0} Tasks Today:</Htag>
+      <Htag tag='h2'>
+        {dayTasks ? dayTasks.length : 0} Tasks Today:
+      </Htag>
       { dayTasks && <ToDoList tasks={dayTasks} tasksDate={activeDay} /> }
       <Button
         appearance='primary'
@@ -75,8 +70,8 @@ const Calendar = () => {
       >
         + Add a new Task
       </Button>
-    </Card>
-    <CreateTask active={modalOpened} setActive={setModalOpened} />
+      </Card>
+      <CreateTask active={modalOpened} setActive={setModalOpened} />
     </>
   );
 };

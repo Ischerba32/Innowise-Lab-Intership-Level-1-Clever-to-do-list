@@ -1,4 +1,4 @@
-import { useContext, useId } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
 import ITaskForm from '../../interfaces/taskForm.interface';
 import TaskForm from '../TaskForm/TaskForm';
@@ -11,19 +11,31 @@ import {v4 as uuidv4} from 'uuid';
 
 const CreateTask = ({active, setActive}: IModalProps) => {
   const uid = useContext(AuthContext);
-  const postTaskRef = ref(database, `${uid}/tasks`);
 
-  const createTask = ({title, description, date}: ITaskForm) => {
+  const createTask = async ({title, description, date}: ITaskForm) => {
     console.log(title, description, date);
-    const newTaskRef = push(postTaskRef);
-    set(newTaskRef, {
+    const taskId = uuidv4();
+    const newTaskRef = ref(database, `${uid}/tasks/${taskId}`);
+    await set(newTaskRef, {
       title,
-      id: uuidv4(),
+      id: taskId,
       description,
-      date
+      date,
+      status: 'incomplete'
     });
 
   };
+  // const createTask = ({title, description, date}: ITaskForm) => {
+  //   console.log(title, description, date);
+  //   const newTaskRef = push(postTaskRef);
+  //   set(newTaskRef, {
+  //     title,
+  //     id: uuidv4(),
+  //     description,
+  //     date
+  //   });
+
+  // };
 
   return (
     <Modal
