@@ -24,9 +24,9 @@ const ToDoItem = ({ task, taskDate }: IToDoItemProps) => {
     update(ref(database, `${uid}/tasks/${task.id}`), {
       title,
       description,
-      id: task.id,
+      // id: task.id,
       date,
-      status: task.status
+      // status: task.status
     });
   };
 

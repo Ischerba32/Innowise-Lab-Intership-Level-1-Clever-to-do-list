@@ -11,11 +11,11 @@ export interface IAuthRouteProps {
 
 const AuthRoute = ({children}: IAuthRouteProps) => {
   // const auth = getAuth();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
   // const [user, setUser] = useState<User | null>(null);
   const [user, setUser] = useState<string>('');
 
+  const navigate = useNavigate();
   useEffect(() => {
     // authCheck();
     const authCheck = onAuthStateChanged(auth, (user) => {

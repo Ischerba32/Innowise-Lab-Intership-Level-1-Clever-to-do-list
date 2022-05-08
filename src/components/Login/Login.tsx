@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../config/firebaseConfig';
 import IAuthForm from '../../interfaces/authForm.interface';
 import AuthForm from '../AuthForm/AuthForm';
@@ -10,6 +10,15 @@ const Login = () => {
   const [authing, setAuthing] = useState<boolean>(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const authCheck = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate('/');
+      }
+    });
+    return () => authCheck();
+  }, [auth]);
 
   const signIn = async ({email, password}: IAuthForm) => {
     setError('');
