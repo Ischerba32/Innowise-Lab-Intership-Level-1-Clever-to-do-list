@@ -1,10 +1,9 @@
-import React from 'react';
 import IModalProps from './Modal.props';
 import styles from './Modal.module.scss';
 import cn from 'classnames';
-import { Card } from '../Card/Card';
+import { Card } from '../';
 
-const Modal = ({active, setActive, children, className, ...props}: IModalProps) => {
+export const Modal = ({active, setActive, children, className, ...props}: IModalProps) => {
   return (
     <div
       className={cn(styles.modal, className, {
@@ -25,5 +24,3 @@ const Modal = ({active, setActive, children, className, ...props}: IModalProps) 
     </div>
   );
 };
-
-export default Modal;

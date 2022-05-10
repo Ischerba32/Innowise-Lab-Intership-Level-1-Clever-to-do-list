@@ -1,18 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import styles from './Calendar.module.scss';
-import {calendar} from '../../helpers/calendar';
+import { calendar } from '../../helpers/calendar';
 import moment, { Moment } from 'moment';
 import Day from '../Day/Day';
-import { Card } from '../UI/Card/Card';
-import { Htag } from '../UI/Htag/Htag';
-import { Button } from '../UI/Button/Button';
+import { Card, Htag, Button, Loader } from '../UI';
 import ToDoList from '../ToDo/ToDoList/ToDoList';
 import CreateTask from '../CreateTask/CreateTask';
 import { database } from '../../config/firebaseConfig';
 import { ref, onValue } from 'firebase/database';
 import { AuthContext } from '../../context/auth.context';
 import ITask from '../../interfaces/task.interface';
-import { Loader } from '../UI/Loader/Loader';
 
 const Calendar = () => {
   const [activeDay, setActiveDay] = useState<string>(moment().format('YYYY-MM-DD'));
@@ -23,15 +20,14 @@ const Calendar = () => {
 
   const fetchData = (uid: string) => {
     setLoading(true);
-    console.log(`uid: ${uid}`);
     uid && onValue(ref(database, `/${uid}/tasks`), snapshot => {
-    console.log(snapshot.val());
     if (snapshot.val()) {
       setDataFromDB(Object.values(snapshot.val()));
     } else setDataFromDB([]);
     setLoading(false);
     });
   };
+
   useEffect(() => {
     fetchData(uid);
   },[uid]);
@@ -65,7 +61,7 @@ const Calendar = () => {
       </div>
       <Card color='white' className={styles.toDo}>
       <Htag tag='h2'>
-        {dayTasks ? dayTasks.length : 0} Tasks Today:
+      Tasks Today: {dayTasks ? dayTasks.length : 0}
       </Htag>
       { dayTasks && <ToDoList tasks={dayTasks} tasksDate={activeDay} /> }
       <Button

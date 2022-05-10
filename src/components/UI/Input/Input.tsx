@@ -6,10 +6,10 @@ import cn from 'classnames';
 export const Input = forwardRef(({error, className, ...props}: IInputProps, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
   return (
     <div className={cn(styles.inputWrapper, className)}>
-      <input className={cn(styles.input, {
-        [styles.error]: error
+      <input className={cn(styles.inputWrapper__input, {
+        [styles.inputWrapper__input_error]: error
       })} ref={ref} {...props} />
-      {error && <span role="alert" className={styles.errorMessage}>{error.message}</span>}
+      {error && <span role="alert" className={styles.inputWrapper__errorMessage}>{error.message}</span>}
     </div>
   );
 });

@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import ITaskForm from '../../interfaces/taskForm.interface';
-import { Button } from '../UI/Button/Button';
-import { Input } from '../UI/Input/Input';
-import { Textarea } from '../UI/Textarea/Textarea';
+import { Button, Input, Textarea } from '../UI';
 import styles from './TaskForm.module.scss';
 import ITaskFormProps from './TaskForm.props';
 import cn from 'classnames';
@@ -11,18 +8,18 @@ import cn from 'classnames';
 const TaskForm = ({submitHandler, buttonTitle, title, description, date, className, ...props}: ITaskFormProps) => {
   const {register, handleSubmit, formState: { errors }, reset, clearErrors} = useForm<ITaskForm>();
 
-  const handleButtonClick = async () => {
+  const handleButtonClick = () => {
     clearErrors();
-    // reset();
   };
 
-  // const formSubmit = () => {
-  //   submitHandler
-  // }
+  const formSubmit = ({title, description, date}: ITaskForm) => {
+    submitHandler({title, description, date});
+    reset();
+  };
 
   return (
     <form
-      onSubmit={handleSubmit(submitHandler)}
+      onSubmit={handleSubmit(formSubmit)}
       className={cn(styles.taskForm, className)}
       {...props}
     >

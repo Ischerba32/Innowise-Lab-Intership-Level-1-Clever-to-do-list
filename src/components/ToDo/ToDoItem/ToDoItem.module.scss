@@ -1,3 +1,8 @@
+.toDoContainer {
+  position: relative;
+  transition: height 0.3s;
+}
+
 .toDoItem {
   display: grid;
   grid-template-columns: 30px 1fr auto;
@@ -27,83 +32,21 @@
 
   &__description {
     padding: 15px;
+    transition: all 0.2s;
 
     p {
       margin: 0;
     }
 
     &_opened {
-      display: block;
       height: auto;
-      opacity: 1;
       margin-top: 10px;
     }
 
     &_closed {
-      display: none;
       height: 0;
+      padding: 0;
       opacity: 0;
     }
-  }
-}
-
-.container {
-  display: block;
-  position: relative;
-  margin-left: 3px;
-  margin-bottom: 24px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-
-    &:checked ~ .checkmark {
-      background-color: var(--primary);
-    }
-
-    &:checked ~ .checkmark:after {
-      display: block;
-    }
-  }
-
-  &:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-
-  .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  border-radius: 15px;
-  background-color: #eee;
-
-  &:after {
-    content: "";
-    position: absolute;
-    display: none;
   }
 }

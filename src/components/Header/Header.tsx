@@ -4,8 +4,7 @@ import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebaseConfig";
-import { Button } from '../UI/Button/Button';
-import { Htag } from '../UI/Htag/Htag';
+import { Button, Htag } from '../UI';
 
 export const Header = ({className, ...props}: HeaderProps): JSX.Element => {
   return (
@@ -14,7 +13,7 @@ export const Header = ({className, ...props}: HeaderProps): JSX.Element => {
     >
       <Link to='/'>
         <Htag tag='h3'>
-          Taskker
+          Tassker
         </Htag>
       </Link>
       <Button

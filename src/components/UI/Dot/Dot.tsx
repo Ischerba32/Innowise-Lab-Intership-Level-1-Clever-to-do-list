@@ -6,7 +6,7 @@ export const Dot = ({color = 'incomplete'}: IDotProps) => {
   return (
     <>
       <div className={cn(styles.dot, {
-        [styles.dot__complete]: color === 'complete'
+        [styles.dot_complete]: color === 'complete'
       })}></div>
     </>
   );

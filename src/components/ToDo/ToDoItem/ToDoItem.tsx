@@ -1,12 +1,8 @@
-import React, { useContext, useState } from 'react';
-import { Button } from '../../UI/Button/Button';
+import { useContext, useState } from 'react';
 import styles from './ToDoItem.module.scss';
-import { Htag } from '../../UI/Htag/Htag';
-import { Card } from '../../UI/Card/Card';
 import IToDoItemProps from './ToDoItem.props';
 import cn from 'classnames';
-import Modal from '../../UI/Modal/Modal';
-import Checkbox from '../../UI/Checkbox/Checkbox';
+import { Checkbox, Button, Modal, Htag, Card } from '../../UI';
 import ITaskForm from '../../../interfaces/taskForm.interface';
 import TaskForm from '../../TaskForm/TaskForm';
 import { ref, update, remove } from "firebase/database";
@@ -24,9 +20,7 @@ const ToDoItem = ({ task, taskDate }: IToDoItemProps) => {
     update(ref(database, `${uid}/tasks/${task.id}`), {
       title,
       description,
-      // id: task.id,
       date,
-      // status: task.status
     });
   };
 
@@ -41,7 +35,7 @@ const ToDoItem = ({ task, taskDate }: IToDoItemProps) => {
   };
 
   return (
-    <>
+    <div className={styles.toDoContainer}>
       <Card color='blue' className={styles.toDoItem}>
         <div className={styles.toDoItem__content}>
           <Checkbox
@@ -83,7 +77,7 @@ const ToDoItem = ({ task, taskDate }: IToDoItemProps) => {
           date={taskDate}
         />
       </Modal>
-    </>
+    </div>
   );
 };
 

@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
 import IDayProps from './Day.props';
 import styles from './Day.module.scss';
 import cn from 'classnames';
-import { Card } from '../UI/Card/Card';
-import { Dot } from '../UI/Dot/Dot';
+import { Card, Dot } from '../UI';
 
 const Day = ({ day, activeDay, setActiveDay, dot }: IDayProps) => {
 

@@ -1,13 +1,9 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import IAuthForm from '../../interfaces/authForm.interface';
-import { Button } from '../UI/Button/Button';
-import { Card } from '../UI/Card/Card';
-import { Input } from '../UI/Input/Input';
+import { Button, Card, Input } from '../UI';
 import styles from './AuthForm.module.scss';
 import IAuthFormProps from './AuthForm.props';
-
 
 const AuthForm = ({onSubmit, formAction, actionLink, actionTitle}: IAuthFormProps) => {
   const {register, handleSubmit, formState: { errors }, reset, clearErrors} = useForm<IAuthForm>();

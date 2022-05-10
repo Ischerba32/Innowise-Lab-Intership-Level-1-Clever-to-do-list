@@ -7,14 +7,14 @@ export const Textarea = forwardRef(({error, className, ...props}: ITextareaProps
   return (
     <div className={cn(styles.textareaWrapper, className)}>
       <textarea
-        className={cn(styles.textarea, {
-          [styles.error]: error
+        className={cn(styles.textareaWrapper__textarea, {
+          [styles.textareaWrapper__textarea_error]: error
         })}
         ref={ref}
         rows={5}
         {...props}
       />
-      {error && <span role="alert" className={styles.errorMessage}>{error.message}</span>}
+      {error && <span role="alert" className={styles.textareaWrapper__errorMessage}>{error.message}</span>}
     </div>
   );
 });

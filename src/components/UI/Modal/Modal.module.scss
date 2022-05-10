@@ -16,11 +16,8 @@
 
   &__content {
     padding: 20px;
-    // border-radius: 12px;
-    // background-color: var(--white);
     transform: scale(0.5);
     transition: 0.2s all;
-    // width: 50vw;
 
     &_active {
       transform: scale(1);

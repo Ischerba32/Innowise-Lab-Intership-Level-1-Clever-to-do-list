@@ -6,7 +6,7 @@ export const Card = (({children, color = 'white', className, ...props}: ICardPro
   return (
     <div
       className={cn(styles.card, className, {
-        [styles.blue]: color == 'blue',
+        [styles.card_blue]: color == 'blue',
       })}
       {...props}
     >
