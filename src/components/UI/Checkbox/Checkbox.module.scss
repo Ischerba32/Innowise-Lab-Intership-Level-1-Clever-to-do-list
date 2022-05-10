@@ -27,7 +27,7 @@
   }
 
   &:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: var(--gray);
   }
 
   .checkmark:after {
@@ -50,7 +50,7 @@
   height: 25px;
   width: 25px;
   border-radius: 15px;
-  background-color: #eee;
+  background-color: #ccc;
 
   &:after {
     content: "";
