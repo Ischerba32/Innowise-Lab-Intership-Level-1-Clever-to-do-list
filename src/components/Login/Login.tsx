@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../config/firebaseConfig';
@@ -6,9 +6,6 @@ import IAuthForm from '../../interfaces/authForm.interface';
 import AuthForm from '../AuthForm/AuthForm';
 
 const Login = () => {
-  const [error, setError] = useState<string>('');
-  const [authing, setAuthing] = useState<boolean>(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,20 +18,8 @@ const Login = () => {
   }, [auth]);
 
   const signIn = async ({email, password}: IAuthForm) => {
-    setError('');
-    setAuthing(true);
-    try {
-      const { user } = await signInWithEmailAndPassword(auth, email, password);
-      console.log(user.uid);
-
-      navigate('/');
-    }
-    catch (error) {
-      setError((error as Error).message);
-      console.log(error);
-      setAuthing(false);
-
-    }
+    await signInWithEmailAndPassword(auth, email, password);
+    navigate('/');
   };
 
   return (

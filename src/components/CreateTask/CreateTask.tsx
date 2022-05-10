@@ -10,7 +10,7 @@ import { database } from '../../config/firebaseConfig';
 import {v4 as uuidv4} from 'uuid';
 
 const CreateTask = ({active, setActive}: IModalProps) => {
-  const uid = useContext(AuthContext);
+  const {uid} = useContext(AuthContext);
 
   const createTask = async ({title, description, date}: ITaskForm) => {
     console.log(title, description, date);

@@ -10,13 +10,14 @@ import { database } from '../../config/firebaseConfig';
 import { ref, onValue } from 'firebase/database';
 import { AuthContext } from '../../context/auth.context';
 import ITask from '../../interfaces/task.interface';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Calendar = () => {
   const [activeDay, setActiveDay] = useState<string>(moment().format('YYYY-MM-DD'));
   const [modalOpened, setModalOpened] = useState<boolean>(false);
   const [dataFromDB, setDataFromDB] = useState<ITask[] | null>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const uid = useContext(AuthContext);
+  const {uid, email} = useContext(AuthContext);
 
   const fetchData = (uid: string) => {
     setLoading(true);
@@ -30,7 +31,8 @@ const Calendar = () => {
 
   useEffect(() => {
     fetchData(uid);
-  },[uid]);
+    email && toast(`Welcome back, ${email}`);
+  },[uid, email]);
 
   const checkTasksStatus = (tasks: ITask[] | null, date: string) => {
     const dayTasks = tasks?.filter(task => task.date === date);
@@ -73,6 +75,17 @@ const Calendar = () => {
       </Button>
       </Card>
       <CreateTask active={modalOpened} setActive={setModalOpened} />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };

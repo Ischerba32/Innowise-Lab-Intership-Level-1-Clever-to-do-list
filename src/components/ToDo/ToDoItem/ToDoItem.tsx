@@ -9,11 +9,10 @@ import { ref, update, remove } from "firebase/database";
 import { database } from '../../../config/firebaseConfig';
 import { AuthContext } from '../../../context/auth.context';
 
-
 const ToDoItem = ({ task, taskDate }: IToDoItemProps) => {
   const [descriptionOpened, setDescriptionOpened] = useState<boolean>(false);
   const [modalOpened, setModalOpened] = useState<boolean>(false);
-  const uid = useContext(AuthContext);
+  const { uid } = useContext(AuthContext);
 
   const editTask = ({title, description, date}: ITaskForm) => {
     console.log(title, description, date, task.id);
