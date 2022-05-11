@@ -6,6 +6,7 @@ body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+	transition: background 200ms linear, color 200ms linear;
 }
 #root {
 	max-width: 762px;
@@ -31,8 +32,40 @@ a {
 	--primary: #7351F5;
 	--primary-hover: #6344DF;
 	--red: #FC836D;
-	--red-light: #FEA291;
-	--red-alert: #C3431C;
 	--background: #F5F6F8;
+	--toastify-color-progress: var(--primary);
+	--toastify-color-progress-light: var(--primary);
 	--font-family: noto sans display, sans-serif;
+}
+
+:root[data-theme=light] {
+	--background: #F5F6F8;
+	--card: var(--white);
+	--card-blue: #ebe8f9;
+	--text-color: var(--black);
+	--date-theme: light;
+	--input-background: var(white);
+}
+
+:root[data-theme=dark] {
+	--card: #2d2c36;
+	--background: #3f3d46;
+	--card-blue: #47444e;
+	--text-color: var(--white);
+	--date-theme: dark;
+	--input-background: #524f5a;
+}
+
+// .Toastify__progress-bar-theme--dark {
+// 	background: var(--toastify-color-progress-dark) !important;
+// }
+// .Toastify__progress-bar-theme--light {
+// 	background: var(--toastify-color-progress-light) !important;
+// }
+
+.Toastify__progress-bar--default {
+	background: var(--toastify-color-progress) !important;
+}
+.Toastify__progress-bar--error {
+	background: var(--red) !important;
 }

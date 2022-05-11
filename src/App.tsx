@@ -3,8 +3,11 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import AuthRoute from './components/AuthRoute/AuthRoute';
+import { useTheme } from './hooks/useTheme';
 
 function App() {
+	const {theme, setTheme} = useTheme();
+
 	return (
 			<Router>
 				<Routes>

@@ -11,6 +11,7 @@ import { ref, onValue } from 'firebase/database';
 import { AuthContext } from '../../context/auth.context';
 import ITask from '../../interfaces/task.interface';
 import { toast, ToastContainer } from 'react-toastify';
+import { useTheme } from '../../hooks/useTheme';
 
 const Calendar = () => {
   const [activeDay, setActiveDay] = useState<string>(moment().format('YYYY-MM-DD'));
@@ -18,6 +19,7 @@ const Calendar = () => {
   const [dataFromDB, setDataFromDB] = useState<ITask[] | null>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const {uid, email} = useContext(AuthContext);
+  const {theme} = useTheme();
 
   const fetchData = (uid: string) => {
     setLoading(true);
@@ -77,14 +79,14 @@ const Calendar = () => {
       <CreateTask active={modalOpened} setActive={setModalOpened} />
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
-        newestOnTop={false}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        theme={theme === 'light' ? 'light': 'dark'}
       />
     </>
   );
