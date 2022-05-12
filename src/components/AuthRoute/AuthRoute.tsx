@@ -14,6 +14,7 @@ const AuthRoute = ({children}: IAuthRouteProps) => {
   const [user, setUser] = useState<IUser>({uid: '', email: ''});
 
   const navigate = useNavigate();
+
   useEffect(() => {
     const authCheck = onAuthStateChanged(auth, (user) => {
       if (user) {

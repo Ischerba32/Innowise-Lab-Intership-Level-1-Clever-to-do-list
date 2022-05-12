@@ -2,6 +2,8 @@ import IDayProps from './Day.props';
 import styles from './Day.module.scss';
 import cn from 'classnames';
 import { Card, Dot } from '../UI';
+import { memo } from "react";
+
 
 const Day = ({ day, activeDay, setActiveDay, dot }: IDayProps) => {
 
