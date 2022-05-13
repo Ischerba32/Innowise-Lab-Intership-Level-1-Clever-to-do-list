@@ -15,7 +15,7 @@ const Login = () => {
       }
     });
     return () => authCheck();
-  }, [auth]);
+  }, [navigate]);
 
   const signIn = async ({email, password}: IAuthForm) => {
     await signInWithEmailAndPassword(auth, email, password);

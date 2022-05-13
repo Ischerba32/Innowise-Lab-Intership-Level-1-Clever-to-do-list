@@ -15,7 +15,6 @@ const ToDoItem = ({ task, taskDate }: IToDoItemProps) => {
   const { uid } = useContext(AuthContext);
 
   const editTask = ({title, description, date}: ITaskForm) => {
-    console.log(title, description, date, task.id);
     update(ref(database, `${uid}/tasks/${task.id}`), {
       title,
       description,

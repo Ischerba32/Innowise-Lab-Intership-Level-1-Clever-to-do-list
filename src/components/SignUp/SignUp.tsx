@@ -15,7 +15,7 @@ const SignUp = () => {
       }
     });
     return () => authCheck();
-  }, [auth]);
+  }, [navigate]);
 
   const signUp = async ({email, password}: IAuthForm) => {
     await createUserWithEmailAndPassword(auth, email, password);
