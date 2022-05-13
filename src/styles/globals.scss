@@ -44,7 +44,7 @@ a {
 	--card-blue: #ebe8f9;
 	--text-color: var(--black);
 	--date-theme: light;
-	--input-background: var(white);
+	--input-background: var(--white);
 }
 
 :root[data-theme=dark] {
@@ -55,13 +55,6 @@ a {
 	--date-theme: dark;
 	--input-background: #524f5a;
 }
-
-// .Toastify__progress-bar-theme--dark {
-// 	background: var(--toastify-color-progress-dark) !important;
-// }
-// .Toastify__progress-bar-theme--light {
-// 	background: var(--toastify-color-progress-light) !important;
-// }
 
 .Toastify__progress-bar--default {
 	background: var(--toastify-color-progress) !important;

@@ -44,7 +44,8 @@ Complete bundle will store in "dist" folder
             AuthRoute -- auth protected component
             Calendar -- calendar with tasks component
             CreateTask -- creation task component
-            Day -- one day from calendar componnt
+            Day -- one day from calendar component
+            DaysList -- days list from calendar component
             Header -- header component
             Home -- main page
             Login -- login page
@@ -57,6 +58,7 @@ Complete bundle will store in "dist" folder
           config - firebase config
           context - auth context
           helpers - date handlers
+          hooks - custom hooks
           interfaces - application interfaces
           styles - global application styles
 

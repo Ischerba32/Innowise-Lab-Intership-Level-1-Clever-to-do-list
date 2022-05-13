@@ -34,7 +34,7 @@ const AuthRoute = ({children}: IAuthRouteProps) => {
       }
     });
     return () => authCheck();
-  }, [auth]);
+  }, [navigate]);
 
   if (loading) return <p>Loading...</p>;
 

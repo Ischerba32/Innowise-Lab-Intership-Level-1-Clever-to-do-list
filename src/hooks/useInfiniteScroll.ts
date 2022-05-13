@@ -23,15 +23,5 @@ export const useInfiniteScroll = () => {
     if (loadMoreRef.current) observer.observe(loadMoreRef.current);
   }, [handleObserver]);
 
-    // useEffect(() => {
-  //   const option = {
-  //     root: null,
-  //     rootMargin: "20px",
-  //     threshold: 0
-  //   };
-  //   const observer = new IntersectionObserver(handleObserver, option);
-  //   if (loader.current) observer.observe(loader.current);
-  // }, [handleObserver]);
-
   return { loadMoreRef, month };
 };
