@@ -37,9 +37,9 @@ Complete bundle will store in "dist" folder
         src -- source code directory
           components - components directory
                       (every component directory include
-                      .tsx - component,
-                      .ts - props interface,
-                      .scss - styles)
+                      index.tsx - component,
+                      props.ts - props interface,
+                      styles.module.scss - styles)
             AuthForm -- login / signUp form component
             AuthRoute -- auth protected component
             Calendar -- calendar with tasks component

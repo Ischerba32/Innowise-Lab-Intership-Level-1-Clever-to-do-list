@@ -6,7 +6,7 @@ import AuthRoute from './components/AuthRoute';
 import { useTheme } from './hooks/useTheme';
 
 function App() {
-	const {theme, setTheme} = useTheme();
+	useTheme();
 
 	return (
 			<Router>
