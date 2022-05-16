@@ -10,22 +10,35 @@
   justify-content: center;
   align-items: center;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
   transition: 0.3s;
   backdrop-filter: blur(10px);
 
   &__content {
-    padding: 20px;
+    padding: 10px 20px 20px;
     transform: scale(0.5);
     transition: 0.2s all;
 
     &_active {
       transform: scale(1);
     }
+
+    &_close {
+      text-align: end;
+      font-size: 20px;
+      margin-bottom: 10px;
+
+      span {
+        cursor: pointer;
+        color: var(--gray);
+      }
+    }
   }
 
   &_active {
     opacity: 1;
+    visibility: visible;
     pointer-events: all;
   }
 }

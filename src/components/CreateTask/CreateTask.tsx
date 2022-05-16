@@ -4,7 +4,6 @@ import ITaskForm from '../../interfaces/taskForm.interface';
 import TaskForm from '../TaskForm/TaskForm';
 import { Modal } from '../UI';
 import IModalProps from '../UI/Modal/Modal.props';
-import styles from './CreateTask.module.scss';
 import { ref, set } from "firebase/database";
 import { database } from '../../config/firebaseConfig';
 import {v4 as uuidv4} from 'uuid';
@@ -28,11 +27,13 @@ const CreateTask = ({active, setActive}: IModalProps) => {
 
   return (
     <Modal
-      className={styles.createTask}
       active={active}
       setActive={setActive}
     >
-      <TaskForm submitHandler={createTask} buttonTitle='Create' />
+      <TaskForm
+        submitHandler={createTask}
+        buttonTitle='Create'
+      />
     </Modal>
   );
 };

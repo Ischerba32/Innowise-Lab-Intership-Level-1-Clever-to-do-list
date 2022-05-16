@@ -19,6 +19,9 @@ export const Modal = ({active, setActive, children, className, ...props}: IModal
         })}
         onClick={e => e.stopPropagation()}
       >
+        <div className={styles.modal__content_close}>
+          <span onClick={() => setActive(false)}>&times;</span>
+        </div>
         {children}
         </Card>
     </div>
