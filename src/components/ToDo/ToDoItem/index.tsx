@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
-import styles from './ToDoItem.module.scss';
-import IToDoItemProps from './ToDoItem.props';
+import styles from './styles.module.scss';
+import IToDoItemProps from './props';
 import cn from 'classnames';
 import { Checkbox, Button, Htag, Card } from '../../UI';
 import { ref, update, remove } from "firebase/database";
 import { database } from '../../../config/firebaseConfig';
 import { AuthContext } from '../../../context/auth.context';
-import UpdateTask from '../../UpdateTask/UpdateTask';
+import UpdateTask from '../../UpdateTask';
 
 const ToDoItem = ({ task }: IToDoItemProps) => {
   const [descriptionOpened, setDescriptionOpened] = useState<boolean>(false);

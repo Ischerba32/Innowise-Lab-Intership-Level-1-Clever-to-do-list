@@ -2,8 +2,8 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import IAuthForm from '../../interfaces/authForm.interface';
 import { Button, Card, Input } from '../UI';
-import styles from './AuthForm.module.scss';
-import IAuthFormProps from './AuthForm.props';
+import styles from './styles.module.scss';
+import IAuthFormProps from './props';
 import { ToastContainer, toast } from 'react-toastify';
 import { useTheme } from '../../hooks/useTheme';
 
@@ -24,7 +24,6 @@ const AuthForm = ({onSubmit, formAction, actionLink, actionTitle}: IAuthFormProp
 
         error: {
           render({data}){
-            // When the promise reject, data will contains the error
             return `${data.message}`;
           }
         }
@@ -53,7 +52,7 @@ const AuthForm = ({onSubmit, formAction, actionLink, actionTitle}: IAuthFormProp
               onClick={() => clearErrors()}
               className={styles.loadingBtn}
             >
-             {/* {isLoading && <span><LoaderIcon /></span> */} {formAction}
+             {formAction}
             </Button>
             {actionLink &&
             <Link to={actionLink}>
@@ -62,10 +61,7 @@ const AuthForm = ({onSubmit, formAction, actionLink, actionTitle}: IAuthFormProp
               </p>
             </Link>}
           </div>
-
-          {/* {error && <p className={styles.errorMsg}>{error}</p>} */}
         </form>
-        {/* {successMsg && <Htag tag="h2">{successMsg}</Htag>} */}
       </Card>
       <ToastContainer
         position="top-right"

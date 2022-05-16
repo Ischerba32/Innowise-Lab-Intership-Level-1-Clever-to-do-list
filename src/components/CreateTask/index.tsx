@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
 import ITaskForm from '../../interfaces/taskForm.interface';
-import TaskForm from '../TaskForm/TaskForm';
+import TaskForm from '../TaskForm';
 import { Modal } from '../UI';
-import IModalProps from '../UI/Modal/Modal.props';
+import IModalProps from '../UI/Modal/props';
 import { ref, set } from "firebase/database";
 import { database } from '../../config/firebaseConfig';
 import {v4 as uuidv4} from 'uuid';

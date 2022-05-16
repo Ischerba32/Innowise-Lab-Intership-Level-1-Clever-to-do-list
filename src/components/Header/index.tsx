@@ -1,5 +1,5 @@
-import { HeaderProps } from './Header.props';
-import styles from './Header.module.scss';
+import { HeaderProps } from './props';
+import styles from './styles.module.scss';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { signOut } from "firebase/auth";

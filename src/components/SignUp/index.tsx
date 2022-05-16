@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../config/firebaseConfig';
-import AuthForm from '../AuthForm/AuthForm';
+import AuthForm from '../AuthForm';
 import IAuthForm from '../../interfaces/authForm.interface';
 
 const SignUp = () => {

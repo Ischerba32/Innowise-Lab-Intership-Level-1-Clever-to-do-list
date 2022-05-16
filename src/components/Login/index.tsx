@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../config/firebaseConfig';
 import IAuthForm from '../../interfaces/authForm.interface';
-import AuthForm from '../AuthForm/AuthForm';
+import AuthForm from '../AuthForm';
 
 const Login = () => {
   const navigate = useNavigate();

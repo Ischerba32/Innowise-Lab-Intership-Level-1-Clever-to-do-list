@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import ITaskForm from '../../interfaces/taskForm.interface';
 import { Button, Input, Textarea } from '../UI';
-import styles from './TaskForm.module.scss';
-import ITaskFormProps from './TaskForm.props';
+import styles from './styles.module.scss';
+import ITaskFormProps from './props';
 import cn from 'classnames';
 
 const TaskForm = ({submitHandler, buttonTitle, title, description, date, className, ...props}: ITaskFormProps) => {

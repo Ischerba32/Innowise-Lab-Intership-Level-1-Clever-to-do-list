@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
-import TaskForm from '../TaskForm/TaskForm';
+import TaskForm from '../TaskForm';
 import { Modal } from '../UI';
 import { ref, update } from "firebase/database";
 import { database } from '../../config/firebaseConfig';
 import ITaskForm from '../../interfaces/taskForm.interface';
-import IUpdateTaskProps from './UpdateTask.props';
+import IUpdateTaskProps from './props';
 
 const UpdateTask = ({task, active, setActive}: IUpdateTaskProps) => {
   const { uid } = useContext(AuthContext);

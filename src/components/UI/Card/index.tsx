@@ -1,5 +1,5 @@
-import {ICardProps} from './Card.props';
-import styles from './Card.module.scss';
+import {ICardProps} from './props';
+import styles from './styles.module.scss';
 import cn from 'classnames';
 
 export const Card = (({children, color = 'white', className, ...props}: ICardProps): JSX.Element => {

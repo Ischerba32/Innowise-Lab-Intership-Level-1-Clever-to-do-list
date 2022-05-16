@@ -1,5 +1,5 @@
-import Calendar from "../Calendar/Calendar";
-import { Header } from "../Header/Header";
+import Calendar from "../Calendar";
+import { Header } from "../Header";
 
 
 const Home = () => {

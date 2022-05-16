@@ -7,11 +7,11 @@ import { database } from '../../config/firebaseConfig';
 import { ref, onValue } from 'firebase/database';
 import ITask from '../../interfaces/task.interface';
 
-import styles from './Calendar.module.scss';
-import DaysList from '../DaysList/DaysList';
+import styles from './styles.module.scss';
+import DaysList from '../DaysList';
 import { Card, Htag, Button, Loader } from '../UI';
-import ToDoList from '../ToDo/ToDoList/ToDoList';
-import CreateTask from '../CreateTask/CreateTask';
+import ToDoList from '../ToDo/ToDoList';
+import CreateTask from '../CreateTask';
 
 const Calendar = memo((): JSX.Element => {
   const [activeDay, setActiveDay] = useState<string>(moment().format('YYYY-MM-DD'));

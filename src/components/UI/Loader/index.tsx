@@ -1,5 +1,5 @@
-import { ILoaderProps } from "./Loader.props";
-import styles from './Loader.module.scss';
+import { ILoaderProps } from "./props";
+import styles from './styles.module.scss';
 
 export const Loader = ({speed, customText}: ILoaderProps) => {
   return (

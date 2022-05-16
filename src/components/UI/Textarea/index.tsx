@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef } from 'react';
-import { ITextareaProps } from './Textarea.props';
-import styles from './Textarea.module.scss';
+import { ITextareaProps } from './props';
+import styles from './styles.module.scss';
 import cn from 'classnames';
 
 export const Textarea = forwardRef(({error, className, ...props}: ITextareaProps, ref: ForwardedRef<HTMLTextAreaElement>): JSX.Element => {

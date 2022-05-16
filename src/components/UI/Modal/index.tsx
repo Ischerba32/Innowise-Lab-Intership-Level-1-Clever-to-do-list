@@ -1,7 +1,7 @@
-import IModalProps from './Modal.props';
-import styles from './Modal.module.scss';
+import IModalProps from './props';
+import styles from './styles.module.scss';
 import cn from 'classnames';
-import { Card } from '../';
+import { Card } from '..';
 
 export const Modal = ({active, setActive, children, className, ...props}: IModalProps) => {
   return (

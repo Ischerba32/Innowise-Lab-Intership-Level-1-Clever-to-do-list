@@ -1,6 +1,6 @@
 import { ForwardedRef } from 'react';
-import ICheckboxProps from './Checkbox.props';
-import styles from './Checkbox.module.scss';
+import ICheckboxProps from './props';
+import styles from './styles.module.scss';
 import cn from 'classnames';
 import { forwardRef } from 'react';
 

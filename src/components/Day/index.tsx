@@ -1,5 +1,5 @@
-import IDayProps from './Day.props';
-import styles from './Day.module.scss';
+import IDayProps from './props';
+import styles from './styles.module.scss';
 import cn from 'classnames';
 import { Card, Dot } from '../UI';
 

@@ -1,9 +1,9 @@
 import { Moment } from 'moment';
 import { useFetch } from '../../hooks/useFetch';
-import Day from '../Day/Day';
+import Day from '../Day';
 import ITask from '../../interfaces/task.interface';
 import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
-import IDayListProps from './DaysList.props';
+import IDayListProps from './props';
 
 const DaysList = ({activeDay, setActiveDay, dataFromDB, className, ...props}: IDayListProps): JSX.Element => {
 

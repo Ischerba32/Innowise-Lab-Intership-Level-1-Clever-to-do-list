@@ -1,6 +1,6 @@
-import ToDoItem from '../ToDoItem/ToDoItem';
-import styles from './ToDoList.module.scss';
-import IToDoListProps from './ToDoList.props';
+import ToDoItem from '../ToDoItem';
+import styles from './styles.module.scss';
+import IToDoListProps from './props';
 
 const ToDoList = ({tasks, tasksDate}: IToDoListProps) => {
   return (

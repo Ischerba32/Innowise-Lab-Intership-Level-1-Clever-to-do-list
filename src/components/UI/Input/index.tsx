@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef } from 'react';
-import { IInputProps } from './Input.props';
-import styles from './Input.module.scss';
+import { IInputProps } from './props';
+import styles from './styles.module.scss';
 import cn from 'classnames';
 
 export const Input = forwardRef(({error, className, ...props}: IInputProps, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {

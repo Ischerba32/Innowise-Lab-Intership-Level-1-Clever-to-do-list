@@ -1,5 +1,5 @@
-import { HtagProps } from "./Htag.props";
-import styles from './Htag.module.scss';
+import { HtagProps } from "./props";
+import styles from './styles.module.scss';
 import cn from 'classnames';
 
 export const Htag = ({tag, children, className, ...props}: HtagProps): JSX.Element => {
