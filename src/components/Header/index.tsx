@@ -10,6 +10,7 @@ export const Header = ({className, ...props}: HeaderProps): JSX.Element => {
   const navigate = useNavigate();
 
   const handleClickButton = () => {
+    
     signOut(auth);
     navigate('/login');
   };

@@ -3,6 +3,5 @@ export default interface ITask {
   title: string;
   description: string;
   status: 'incomplete' | 'complete';
-  // status: string;
   date?: string;
 }

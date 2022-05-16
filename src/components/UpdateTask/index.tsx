@@ -25,6 +25,7 @@ const UpdateTask = ({task, active, setActive}: IUpdateTaskProps) => {
         <TaskForm
           submitHandler={editTask}
           buttonTitle='Update'
+          setActiveModal={setActive}
           title={task.title}
           description={task.description}
           date={task.date}

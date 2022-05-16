@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import ITaskFormProps from './props';
 import cn from 'classnames';
 
-const TaskForm = ({submitHandler, buttonTitle, title, description, date, className, ...props}: ITaskFormProps) => {
+const TaskForm = ({submitHandler, setActiveModal, buttonTitle, title, description, date, className, ...props}: ITaskFormProps) => {
   const {register, handleSubmit, formState: { errors }, reset, clearErrors} = useForm<ITaskForm>();
 
   const handleButtonClick = () => {
@@ -15,6 +15,7 @@ const TaskForm = ({submitHandler, buttonTitle, title, description, date, classNa
   const formSubmit = ({title, description, date}: ITaskForm) => {
     submitHandler({title, description, date});
     reset();
+    setActiveModal(false);
   };
 
   return (

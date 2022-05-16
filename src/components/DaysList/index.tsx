@@ -1,5 +1,5 @@
 import { Moment } from 'moment';
-import { useFetch } from '../../hooks/useFetch';
+import { useMonth } from '../../hooks/useMonth';
 import Day from '../Day';
 import ITask from '../../interfaces/task.interface';
 import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
@@ -8,7 +8,7 @@ import IDayListProps from './props';
 const DaysList = ({activeDay, setActiveDay, dataFromDB, className, ...props}: IDayListProps): JSX.Element => {
 
   const { loadMoreRef, month } = useInfiniteScroll();
-  const { list } = useFetch(month);
+  const { days } = useMonth(month);
 
   const checkTasksStatus = (tasks: ITask[] | null, date: string) => {
     const dayTasks = tasks?.filter(task => task.date === date);
@@ -27,7 +27,7 @@ const DaysList = ({activeDay, setActiveDay, dataFromDB, className, ...props}: ID
       className={className}
       {...props}
     >
-      {list && list.map((day: Moment) => (
+      {days && days.map((day: Moment) => (
           <Day
             key={day.format('YYYY-MM-DD')}
             day={day}

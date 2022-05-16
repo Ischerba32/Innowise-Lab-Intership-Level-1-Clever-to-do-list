@@ -32,6 +32,7 @@ const CreateTask = ({active, setActive}: IModalProps) => {
       <TaskForm
         submitHandler={createTask}
         buttonTitle='Create'
+        setActiveModal={setActive}
       />
     </Modal>
   );
