@@ -55,6 +55,16 @@ Complete bundle will store in "dist" folder
               ToDoItem -- toDo item component
               ToDoList -- toDo list component
             UI -- UI stateless components
+              Button
+              Card
+              CheckBox
+              Dot
+              Htag
+              Input
+              Loader
+              Modal
+              Textarea
+            UpdateTask -- update task component
           config - firebase config
           context - auth context
           helpers - date handlers

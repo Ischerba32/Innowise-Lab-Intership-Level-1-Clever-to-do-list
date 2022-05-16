@@ -12,7 +12,6 @@ const CreateTask = ({active, setActive}: IModalProps) => {
   const {uid} = useContext(AuthContext);
 
   const createTask = async ({title, description, date}: ITaskForm) => {
-    console.log(title, description, date);
     const taskId = uuidv4();
     const newTaskRef = ref(database, `${uid}/tasks/${taskId}`);
     await set(newTaskRef, {
