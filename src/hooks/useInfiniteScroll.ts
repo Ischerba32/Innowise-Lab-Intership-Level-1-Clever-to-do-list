@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
+import IUseInfiniteScroll from '../interfaces/hooks/useInfiniteScroll.interface';
 
-export const useInfiniteScroll = () => {
+export const useInfiniteScroll = (): IUseInfiniteScroll => {
   const [month, setMonth] = useState<number>(1);
   const loadMoreRef = useRef(null);
 
